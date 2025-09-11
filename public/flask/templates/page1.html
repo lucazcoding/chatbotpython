@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotina de Treino Personalizada</title>
+    <style>
+        :root {
+            /* Cores para o modo light */
+            --light-bg-color: #f0f0f0;
+            --light-text-color: #2c3e50;
+            --light-primary-color: #27ae60;
+            --light-secondary-color: #1abc9c;
+            --light-input-bg: #ecf0f1;
+            --light-border-color: #bdc3c7;
+        }
+
+        /* Modo Dark */
+        body.dark-mode {
+            --light-bg-color: #1a1a1a;
+            --light-text-color: #ecf0f1;
+            --light-primary-color: #2ecc71;
+            --light-secondary-color: #1abc9c;
+            --light-input-bg: #34495e;
+            --light-border-color: #7f8c8d;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--light-bg-color);
+            color: var(--light-text-color);
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: var(--light-bg-color);
+            border: 1px solid var(--light-border-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--light-primary-color);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: var(--light-text-color);
+            opacity: 0.8;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            color: var(--light-text-color);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-border-color);
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: var(--light-input-bg);
+            color: var(--light-text-color);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--light-primary-color);
+            box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            background-color: var(--light-primary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--light-secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: var(--light-input-bg);
+            border: 1px solid var(--light-border-color);
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background-color 0.3s;
+        }
+
+        /* Estilos específicos para o modo dark */
+        body.dark-mode .container {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode .theme-toggle {
+            background-color: var(--light-primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <div class="container">
+        <div class="header">
+            <h1>Crie Sua Rotina de Treino</h1>
+            <p>Responda as perguntas abaixo para gerar uma rotina de treino personalizada.</p>
+        </div>
+        <form id="training-form">
+            <div class="input-group">
+                <label for="objective">Qual é seu objetivo principal?</label>
+                <input type="text" id="objective" name="objective" placeholder="Ex: Ganhar massa muscular, perder peso, etc." required>
+            </div>
+            <div class="input-group">
+                <label for="weight">Qual é seu peso atual? (em kg)</label>
+                <input type="number" id="weight" name="weight" placeholder="Ex: 75" step="0.1" required>
+            </div>
+            <div class="input-group">
+                <label for="height">Qual é sua altura? (em cm)</label>
+                <input type="number" id="height" name="height" placeholder="Ex: 175" required>
+            </div>
+            <button type="submit" class="btn-submit">Gerar Rotina</button>
+        </form>
+    </div>
+
+    <script>
+        // Função para alternar entre os modos dark e light
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+        }
+
+        // Script para capturar os dados do formulário (para uso futuro com a IA)
+        document.getElementById('training-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const objective = document.getElementById('objective').value;
+            const weight = document.getElementById('weight').value;
+            const height = document.getElementById('height').value;
+
+            // Aqui você faria a chamada para a sua IA (ex: enviando os dados para um backend em Python)
+            // Exemplo:
+            console.log("Dados coletados para a IA:");
+            console.log("Objetivo:", objective);
+            console.log("Peso:", weight, "kg");
+            console.log("Altura:", height, "cm");
+
+            // No futuro, você enviaria esses dados para seu backend
+            // fetch('url_da_sua_api_de_ia', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({ objective, weight, height })
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     // Processa a resposta da IA e mostra a rotina
+            //     console.log("Rotina gerada:", data);
+            //     alert("Sua rotina foi gerada! Verifique o console para os detalhes (mockup).");
+            // })
+            // .catch(error => {
+            //     console.error('Erro ao chamar a IA:', error);
+            //     alert("Ocorreu um erro ao gerar sua rotina. Tente novamente mais tarde.");
+            // });
+
+            alert("Dados enviados com sucesso! A rotina será gerada em breve (função da IA ainda não implementada neste frontend).");
+        });
+    </script>
+</body>
+</html>
