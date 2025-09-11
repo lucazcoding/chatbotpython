@@ -9,4 +9,4 @@ while True:
         break
     else:
         res = sendMessage(_input, history)
-        print(f"\nSonoma:{res}\n")
+        print(f"\nSonoma: {res}\n")

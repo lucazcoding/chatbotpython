@@ -22,7 +22,4 @@ def sendMessage(msg , history=[]):
         return f"Erro ao chamar a API: {str(e)}"
 
 
-
-
-      
  
