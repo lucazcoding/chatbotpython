@@ -17,51 +17,43 @@
         </p>
       </div>
       <form id="training-form">
-    <div class="input-group">
+        <div class="input-group">
         <label for="objective">Qual é seu objetivo principal?</label>
         <input type="text" id="objective" name="objective" placeholder="Ex: Ganhar massa muscular, perder peso, etc." required>
-    </div>
-    <div class="input-group">
-        <label for="weight">Qual é seu peso atual? (em kg)</label>
-        <input type="number" id="weight" name="weight" placeholder="Ex: 75" step="0.1" required>
-    </div>
-    <div class="input-group">
-        <label for="height">Qual é sua altura? (em cm)</label>
-        <input type="number" id="height" name="height" placeholder="Ex: 175" required>
-    </div>
-
-    <div class="input-group">
-        <label for="age">Qual é sua idade? </label>
-        <input type="number" id="age" name="age" placeholder="Ex: 19" required>
-    </div>
-
-    <div class="input-group">
-        <label for="salary">Qual é a sua renda salarial? (em R$)</label>
-        <input type="number" id="salary" name="salary" placeholder="Ex: 1750" required>
-    </div>
-
-    <div class="input-group">
-        <label for="days">Quantos dias dedicados ao treino?</label>
-        <input type="number" id="days" name="days" placeholder="Ex: 4" required>
-    </div>
-
-
-    <div class="input-group">
-        <label for="location">Onde você pretende treinar?</label>
-        <select id="location" name="location" required>
+        </div>
+        <div class="input-group">
+            <label for="weight">Qual é seu peso atual? (em kg)</label>
+            <input type="number" id="weight" name="weight" placeholder="Ex: 75" step="0.1" required>
+        </div>
+        <div class="input-group">
+            <label for="height">Qual é sua altura? (em cm)</label>
+            <input type="number" id="height" name="height" placeholder="Ex: 175" required>
+          </div>
+          <div class="input-group">
+            <label for="age">Qual é sua idade? </label>
+            <input type="number" id="age" name="age" placeholder="Ex: 19" required>
+        </div>
+        <div class="input-group">
+            <label for="salary">Qual é a sua renda salarial? (em R$)</label>
+            <input type="number" id="salary" name="salary" placeholder="Ex: 1750" required>
+        </div>
+        <div class="input-group">
+            <label for="days">Quantos dias dedicados ao treino?</label>
+            <input type="number" id="days" name="days" placeholder="Ex: 4" required>
+        </div>
+        <div class="input-group">
+          <label for="location">Onde você pretende treinar?</label>
+          <select id="location" name="location" required>
             <option value="" disabled selected>Selecione uma opção</option>
             <option value="academia">Academia</option>
             <option value="casa">Casa</option>
             <option value="praca">Praça de Exercícios</option>
-        </select>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">Gerar Rotina</button>
+      </form>
+      <div id="ai-response" class="chat-box"></div>
     </div>
-
-    <button type="submit" class="btn-submit">Gerar Rotina</button>
-</form>
-
-<!-- Onde a resposta da IA será exibida -->
-<div id="ai-response" class="chat-box"></div>
-
 <script src="../static/page1.js"></script>
 
   </body>

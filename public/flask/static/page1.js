@@ -9,7 +9,6 @@ function toggleTheme()
 document.getElementById('training-form').addEventListener('submit', async function(event) {
     event.preventDefault(); 
 
-    // Captura os valores de todos os campos do formulário
     const objective = document.getElementById('objective').value;
     const weight = document.getElementById('weight').value;
     const height = document.getElementById('height').value;
@@ -17,7 +16,6 @@ document.getElementById('training-form').addEventListener('submit', async functi
     const salary = document.getElementById('salary').value;
     const days = document.getElementById('days').value;
 
-    // Cria um objeto 'data' com todos os valores
     const data = { objective, weight, height, age, salary, days };
 
     try {
@@ -30,7 +28,9 @@ document.getElementById('training-form').addEventListener('submit', async functi
         });
 
         const result = await response.json(); 
-        document.getElementById('ai-response').innerHTML = `<p><b>Sonoma:</b> ${result.routine}</p>`;
+        document.querySelector('.header').style.display = 'none';
+        document.getElementById('training-form').style.display = 'none';
+        document.getElementById('ai-response').innerHTML = `<p> ${result.routine}</p>`;
     } catch (err) {
         console.error(err);
         document.getElementById('ai-response').innerHTML = `<p style="color:red;">Erro ao gerar rotina.</p>`;
