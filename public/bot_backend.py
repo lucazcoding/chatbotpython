@@ -1,7 +1,8 @@
 from funcoes import sendMessage
+import os
 
 history = []
-
+os.system('cls')
 while True:
     _input = input("Message: ")
     

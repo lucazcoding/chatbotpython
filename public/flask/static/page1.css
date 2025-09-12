@@ -1,4 +1,4 @@
-:root {
+        :root {
             /* Cores para o modo light */
             --light-bg-color: #f0f0f0;
             --light-text-color: #2c3e50;
@@ -130,3 +130,43 @@
             background-color: var(--light-primary-color);
             color: white;
         }
+
+
+        .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-border-color);
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: var(--light-input-bg);
+            color: var(--light-text-color);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+            appearance: none; /* remove o estilo nativo do navegador */
+            -webkit-appearance: none; /* para navegadores webkit como o Chrome */
+            -moz-appearance: none; /* para o Firefox */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232c3e50%22%20d%3D%22M287%20163.5c-2-2-4.1-2.9-6.3-2.9h-274.5c-2.3%200-4.4%201.2-6.3%202.9-2%202-3%204.1-3%206.3%200%202.3%201%204.4%203%206.3l137.3%20137.3c2%202%204.1%203%206.3%203s4.4-1.2%206.3-3l137.3-137.3c2-2%203-4.1%203-6.3s-1-4.4-3-6.3z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+        }
+
+        .input-group select:focus {
+            outline: none;
+            border-color: var(--light-primary-color);
+            box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
+        }
+
+        
+        
+        #location{
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none; /* Para Chrome, Safari e Edge */
+            margin: 0;
+        }
+            
+    

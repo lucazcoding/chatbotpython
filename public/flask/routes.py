@@ -16,6 +16,9 @@ def home():
 
         prompt = f"Crie uma rotina de treino personalizada com base nos seguintes dados:\n" \
                  f"Objetivo: {objective}\nPeso: {weight}kg\nAltura: {height}cm"
+                 
+        
+        
 
         routine_response = sendMessage(prompt)
         return jsonify({'routine': routine_response})
