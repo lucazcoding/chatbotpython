@@ -20,21 +20,19 @@ def sendMessage(msg , history=[]):
     except Exception as e:
         return f"Erro ao chamar a API: {str(e)}"
 
-
-
-def IaPersonalTrainer(msg, history=[], user_info={"idade": None, "peso": None, "altura": None, "objetivo": None, "renda_salaria": None, "dias_treino": None, "local_treino": None}):
+def IaPersonalTrainer(msg=None, history=[], user_info={"age": None, "weight": None, "height": None, "objective": None, "salary": None, "days": None, "location": None}):
     
     system_prompt = f"""
     Você é um personal trainer virtual. Com base nas informações fornecidas pelo usuário, crie um plano de dieta e treino personalizados.
 
     Informações do Usuário:
-    - Idade: {user_info['idade']}
-    - Peso: {user_info['peso']} kg
-    - Altura: {user_info['altura']} cm
-    - Objetivo: {user_info['objetivo']}
-    - Renda Salarial: {user_info['renda_salaria']}
-    - Dias de Treino: {user_info['dias_treino']}
-    - Local de Treino: {user_info['local_treino']}
+    - Idade: {user_info['age']}
+    - Peso: {user_info['weight']} kg
+    - Altura: {user_info['height']} cm
+    - Objetivo: {user_info['objective']}
+    - Renda Salarial: {user_info['salary']}
+    - Dias de Treino: {user_info['days']}
+    - Local de Treino: {user_info['location']}
 
     Instruções Técnicas para a resposta:
     - Retorne a resposta EXCLUSIVAMENTE como um único bloco de código HTML.
@@ -96,5 +94,4 @@ def IaPersonalTrainer(msg, history=[], user_info={"idade": None, "peso": None, "
         return res
     except Exception as e:
         return f"Erro ao chamar a API: {str(e)}"
-    
     
