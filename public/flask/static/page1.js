@@ -1,14 +1,12 @@
-function toggleTheme() 
-    {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-    }
-
-
+const header = document.querySelector('.header');
+const trainingForm = document.getElementById('training-form');
+const aiResponse = document.getElementById('ai-response');
+const closeBtn = document.querySelector('.close-btn');
 
 document.getElementById('training-form').addEventListener('submit', async function(event) {
     event.preventDefault(); 
 
+    const location = document.getElementById('location').value;
     const objective = document.getElementById('objective').value;
     const weight = document.getElementById('weight').value;
     const height = document.getElementById('height').value;
@@ -16,7 +14,7 @@ document.getElementById('training-form').addEventListener('submit', async functi
     const salary = document.getElementById('salary').value;
     const days = document.getElementById('days').value;
 
-    const data = { objective, weight, height, age, salary, days };
+    const data = { location, objective, weight, height, age, salary, days };
 
     try {
         const response = await fetch('/', {
@@ -28,16 +26,22 @@ document.getElementById('training-form').addEventListener('submit', async functi
         });
 
         const result = await response.json(); 
-        document.querySelector('.header').style.display = 'none';
-        document.getElementById('training-form').style.display = 'none';
-        document.getElementById('ai-response').innerHTML = `<p> ${result.routine}</p>`;
+        header.style.display = 'none';
+        trainingForm.style.display = 'none';
+        aiResponse.innerHTML = `<p> ${result.routine}</p>`;
+        closeBtn.style.display = 'block';
     } catch (err) {
         console.error(err);
         document.getElementById('ai-response').innerHTML = `<p style="color:red;">Erro ao gerar rotina.</p>`;
     }
 });
 
-
+document.querySelector('.close-btn').addEventListener('click', () => {
+    closeBtn.style.display = 'none';
+    header.style.display = 'block';
+    trainingForm.style.display = 'block';
+    aiResponse.innerHTML = '';
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
@@ -45,3 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('dark-mode');
     }
 });
+
+function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+}

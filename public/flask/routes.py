@@ -4,46 +4,21 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from funcoes import sendMessage
+from funcoes import IaPersonalTrainer
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         data = request.get_json()
+        location = data.get('location')
         objective = data.get('objective')
         weight = data.get('weight')
         height = data.get('height')
+        age = data.get('age')
+        salary = data.get('salary')
+        days = data.get('days')
 
-        prompt = f"""
-Crie uma rotina de alimentação e treino personalizada baseada nos dados do usuário:
-
-- Objetivo: {objective}
-- Peso: {weight} kg
-- Altura: {height} cm
-
-O retorno deve ser APENAS em HTML válido, no seguinte formato:
-
-<h2>Seu Plano de Treino</h2>
-<p>Plano semanal para {objective}. Consulte um médico antes de iniciar.</p>
-
-<table>
-  <tr>
-    <th>Refeição</th>
-    <th>Alimento</th>
-    <th>Quantidade</th>
-  </tr>
-  <tr>
-    <th>Dia</th>
-    <th>Exercício</th>
-    <th>Séries</th>
-  </tr>
-  <!-- repita para cada dia -->
-</table>
-
-Nada além desse HTML deve ser retornado sem infomações adicionais, apenas as tabelas.
-"""
-
-        routine_response = sendMessage(prompt)
+        routine_response = IaPersonalTrainer("Preciso de um plano de treino e dieta para ganhar massa muscular.", user_info={"age": age, "weight": weight, "height": height, "objective": objective, "salary": salary, "days": days, "location": location})
         return jsonify({'routine': routine_response})
 
     return render_template('page1.html')
